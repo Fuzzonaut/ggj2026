@@ -11,6 +11,6 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log("nolur artik");
     }
 }
