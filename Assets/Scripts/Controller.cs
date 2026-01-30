@@ -4,11 +4,13 @@ public class Controller : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Collider2D col;
-    [SerializeField] private float speed = 5.0f;
     private float mx;
     private float my;
     private Vector2 mousePos;
-
+    [SerializeField] private float speed = 5.0f;
+    [SerializeField] private Transform firingPoint;
+    
+  
 
     void Awake()
     {
@@ -47,14 +49,12 @@ public class Controller : MonoBehaviour
         transform.localRotation = Quaternion.Euler(0f, 0f, snapped);
 
 
-
-
-
-
-
-
-
     }
 
+
+    void Shoot()
+    {
+     
+    }
 
 }
