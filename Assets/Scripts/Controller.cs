@@ -61,7 +61,11 @@ public class Controller : MonoBehaviour
 
     void Punch()
     {
-        GameObject punch = Instantiate(punchPrefab,firingPoint.position, firingPoint.rotation);
+        GameObject punch = Instantiate(
+            punchPrefab,
+            firingPoint.position,
+            firingPoint.rotation
+        );
 
         Destroy(punch, punchLifetime);
     }
