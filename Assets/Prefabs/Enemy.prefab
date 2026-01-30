@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3408112039731805160}
   - component: {fileID: 7543157902138215214}
   - component: {fileID: 1177899256571309180}
+  - component: {fileID: -7560656294833573835}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -138,3 +139,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-7560656294833573835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9019013451445208664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe0b0d0bceedfd643a7ffbe4a481fc1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 100
