@@ -23,4 +23,11 @@ public class InsanityManager : MonoBehaviour
 
         insanitySlider.value = insanity;
     }
+    public void ReduceInsanity(float amount)
+    {
+        insanity -= amount;
+        
+        
+        if (insanity < 0) insanity = 0;
+    }
 }
