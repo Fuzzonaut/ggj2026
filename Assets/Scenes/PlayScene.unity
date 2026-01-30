@@ -211,29 +211,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &393752521 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3325351127388302440, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
-  m_PrefabInstance: {fileID: 1829013995}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &393752527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393752521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39961a83a69c9cb4d8d16ea36d9d3030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  maxHealth: 100
-  currentHealth: 0
-  collisionDamage: 10
-  damageCooldown: 0.5
-  knockbackForce: 7
-  knockbackDuration: 0.15
 --- !u!1001 &427413162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -295,7 +272,7 @@ PrefabInstance:
       addedObject: {fileID: 1304335992}
     - targetCorrespondingSourceObject: {fileID: 9019013451445208664, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1304335993}
+      addedObject: {fileID: 1304336002}
   m_SourcePrefab: {fileID: 100100000, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
 --- !u!1 &1304335987 stripped
 GameObject:
@@ -329,7 +306,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1304335993
+--- !u!114 &1304336002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -402,10 +379,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3325351127388302440, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 393752527}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
