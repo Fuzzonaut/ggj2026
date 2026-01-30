@@ -894,9 +894,13 @@ GameObject:
   - component: {fileID: 893152844}
   - component: {fileID: 893152843}
   - component: {fileID: 893152842}
+<<<<<<< Updated upstream
+=======
+  - component: {fileID: 893152847}
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1053,8 +1057,13 @@ Transform:
   - {fileID: 1172255790}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!1 &944258564
 GameObject:
+=======
+--- !u!114 &893152847
+MonoBehaviour:
+>>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1101,6 +1110,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 944258564}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
@@ -1186,6 +1196,13 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944258564}
   m_CullTransparentMesh: 1
+=======
+  m_Script: {fileID: 11500000, guid: 5b8bb240e87274ba79b8a145df7acb14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  currentHealth: 3
+  maxHealth: 5
+>>>>>>> Stashed changes
 --- !u!1 &1172255789
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,6 +1236,7 @@ Transform:
   m_Father: {fileID: 893152846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1172255791
+<<<<<<< Updated upstream
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1248,11 +1266,14 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1185529633
+=======
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 1185529632}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1455,6 +1476,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+=======
+  m_GameObject: {fileID: 1172255789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba55f29a76610964a83894a75797c731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  firingPoint: {fileID: 1172255790}
+  mx: 0
+  my: 0
+  mousePos: {x: 0, y: 0}
+>>>>>>> Stashed changes
 --- !u!1001 &5840453280172193768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1577,6 +1610,9 @@ SceneRoots:
   - {fileID: 893152846}
   - {fileID: 5840453280172193768}
   - {fileID: 6675113038370574355}
+<<<<<<< Updated upstream
   - {fileID: 1385482001}
   - {fileID: 1185529634}
   - {fileID: 609908365}
+=======
+>>>>>>> Stashed changes
