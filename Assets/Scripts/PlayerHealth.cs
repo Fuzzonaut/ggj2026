@@ -2,20 +2,50 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int currentHealth = 3;
-    public int maxHealth = 5;
+    [Header("Health")]
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int currentHealth;
 
-    // This method is called by the pill
-    public void Heal(int amount)
+    [Header("Collision Damage")]
+    [SerializeField] private int collisionDamage = 10;
+    [SerializeField] private float damageCooldown = 0.5f; // prevents instant-drain
+
+    private float nextDamageTime = 0f;
+
+    void Awake()
     {
-        currentHealth += amount;
+        currentHealth = maxHealth;
+    }
 
-        // Ensure we don't go over max health
-        if (currentHealth > maxHealth)
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        // If you use triggers instead, use OnTriggerStay2D
+        if (!collision.gameObject.CompareTag("Enemy")) return;
+
+        if (Time.time >= nextDamageTime)
         {
-            currentHealth = maxHealth;
+            TakeDamage(collisionDamage);
+            nextDamageTime = Time.time + damageCooldown;
         }
+    }
 
-        Debug.Log("Health is now: " + currentHealth);
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+        if (currentHealth < 0) currentHealth = 0;
+
+        Debug.Log("Player HP: " + currentHealth);
+
+        if (currentHealth == 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("Player Died!");
+        // TODO: game over, respawn, disable movement, etc.
+        // Destroy(gameObject);
     }
 }
