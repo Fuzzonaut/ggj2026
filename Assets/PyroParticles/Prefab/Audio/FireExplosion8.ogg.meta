@@ -1,7 +1,8 @@
 fileFormatVersion: 2
-guid: da396a16a7f24f64cbb0054f5a56b46a
+guid: 3bbe242bc37c8614fbe02c843ed5b465
+timeCreated: 1431038440
+licenseType: Store
 AudioImporter:
-  externalObjects: {}
   serializedVersion: 6
   defaultSettings:
     loadType: 0
@@ -11,19 +12,17 @@ AudioImporter:
     quality: 1
     conversionMode: 0
   platformSettingOverrides: {}
-  forceToMono: 0
-  normalize: 1
+  forceToMono: 1
   preloadAudioData: 1
   loadInBackground: 0
-  ambisonic: 0
   3D: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 228835
-  packageName: Free Deadly Kombat
-  packageVersion: 1.0
-  assetPath: Assets/Deadly Kombat Free version/fire_punch_02.wav
-  uploadId: 516598
+  productId: 36825
+  packageName: Fire & Spell Effects
+  packageVersion: 1.0.3
+  assetPath: Assets/PyroParticles/Prefab/Audio/FireExplosion8.ogg
+  uploadId: 500401
