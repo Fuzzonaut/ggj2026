@@ -154,8 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InsanityManager
   insanity: 100
-  parent of d8dbc2b (Revert "Pojectile")
-  372f3abd345702a1aae5b5e2691329a918eec5cd
   maxInsanity: 100
   increaseRate: 0.7
   insanitySlider: {fileID: 1753401796}
