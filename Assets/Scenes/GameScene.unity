@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &172239614 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3325351127388302440, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
-  m_PrefabInstance: {fileID: 2037997451}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &195960404
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +467,55 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1303906388}
   m_SourcePrefab: {fileID: 100100000, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
+--- !u!1 &959188706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 959188708}
+  - component: {fileID: 959188707}
+  m_Layer: 0
+  m_Name: PillSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &959188707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959188706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35009a360ad8d4b9f8759bc30901c61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PillSpawner
+  pillPrefab: {fileID: 3516160320251857957, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+  playerTransform: {fileID: 2115564681}
+  spawnInterval: 10
+  minSpawnDistance: 5
+  maxSpawnDistance: 12
+--- !u!4 &959188708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959188706}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.91103, y: 2.30259, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1036849054
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,10 +901,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6739323808483089403, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1036849055}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3325351127388302440, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2115564688}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
 --- !u!4 &2115564681 stripped
 Transform:
@@ -932,17 +973,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3088009072547401115, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_Size.x
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 3088009072547401115, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_Size.y
+      value: 0.48
+      objectReference: {fileID: 0}
     - target: {fileID: 3516160320251857957, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
       propertyPath: m_Name
       value: Pills
       objectReference: {fileID: 0}
     - target: {fileID: 5158991167611716426, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7830741
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158991167611716426, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.68553525
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158991167611716426, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.3076
+      value: 0.32554
       objectReference: {fileID: 0}
     - target: {fileID: 5158991167611716426, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2811
+      value: 1.29308
       objectReference: {fileID: 0}
     - target: {fileID: 5158991167611716426, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
       propertyPath: m_LocalPosition.z
@@ -975,6 +1032,34 @@ PrefabInstance:
     - target: {fileID: 5158991167611716426, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_Size.x
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_Size.y
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6445809573977748145, guid: a59bf32c4e42847e3b2f78933c02d8f6, type: 3}
+    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1178,3 +1263,4 @@ SceneRoots:
   - {fileID: 645893645}
   - {fileID: 5412703267083230681}
   - {fileID: 588056197}
+  - {fileID: 959188708}
