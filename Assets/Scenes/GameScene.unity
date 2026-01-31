@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &112012610 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8444215950316568996, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
-  m_PrefabInstance: {fileID: 2037997451}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &195960404
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,11 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0073750857370148959ad9da1d5707d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InsanityManager
-<<<<<<< HEAD
-  insanity: 33
-=======
   insanity: 100
->>>>>>> parent of d8dbc2b (Revert "Pojectile")
   maxInsanity: 100
   increaseRate: 0.7
   insanitySlider: {fileID: 1753401796}
@@ -698,10 +689,6 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5919895462683201650, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
-      propertyPath: shootPoint
-      value: 
-      objectReference: {fileID: 112012610}
-    - target: {fileID: 5919895462683201650, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
       propertyPath: insanityManager
       value: 
       objectReference: {fileID: 195960405}
@@ -709,10 +696,6 @@ PrefabInstance:
       propertyPath: areaEffectPrefab
       value: 
       objectReference: {fileID: 440351501480242325, guid: b4cf57ffbe18649a48fec802db89adbb, type: 3}
-    - target: {fileID: 5919895462683201650, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 5535159710555607252, guid: a98210fb727ba4b428f5ef1bf9ab2e4a, type: 3}
     - target: {fileID: 6739323808483089403, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.98947
