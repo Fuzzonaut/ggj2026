@@ -5,24 +5,30 @@ public class EnemySpawner : MonoBehaviour
     [Header("References")]
     public GameObject standardEnemyPrefab;
     public GameObject explodingEnemyPrefab;
+
+    [Tooltip("NEW: Big enemy that spawns mini standard enemies.")]
+    public GameObject broodEnemyPrefab;
+
     public InsanityManager insanityManager;
     public Transform playerTransform;
 
-    // REMOVED: public Collider2D spawnArea; 
-    
     [Header("Spawn Distance (The Donut)")]
-    public float minSpawnDistance = 10f; // Minimum distance from player
-    public float maxSpawnDistance = 15f; // Maximum distance from player
+    public float minSpawnDistance = 10f;
+    public float maxSpawnDistance = 15f;
 
     [Header("Spawn Settings")]
     public float spawnRateAtZeroInsanity = 5f;
     public float spawnRateAtMaxInsanity = 0.5f;
 
+    [Header("Tier Chances")]
+    [Range(0f, 1f)] public float chanceToSpawnBroodAt66Plus = 0.25f;
+    [Range(0f, 1f)] public float chanceToSpawnExploderAt33Plus = 0.5f;
+
     private float nextSpawnTime;
 
     void Update()
     {
-        if (playerTransform == null) return;
+        if (playerTransform == null || insanityManager == null) return;
 
         if (Time.time >= nextSpawnTime)
         {
@@ -33,24 +39,37 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        // 1. Calculate a random position around the player
-        // Get a random direction (like a compass heading)
+        // 1) Position around player
         Vector2 randomDirection = Random.insideUnitCircle.normalized;
-        
-        // Pick a random distance between Min and Max
         float randomDistance = Random.Range(minSpawnDistance, maxSpawnDistance);
-        
-        // Final position = Player Position + (Direction * Distance)
         Vector2 spawnPos = (Vector2)playerTransform.position + (randomDirection * randomDistance);
 
-        // 2. Decide WHICH enemy to spawn (Logic from previous step)
+        // 2) Decide which enemy to spawn
         GameObject enemyToSpawn = standardEnemyPrefab;
-        if (insanityManager.insanity >= 66)
+
+        float insanity = insanityManager.insanity;
+
+        // NEW TIER: 66+
+        if (insanity >= 66f && broodEnemyPrefab != null)
         {
-            if (Random.value > 0.5f) enemyToSpawn = explodingEnemyPrefab;
+            if (Random.value < chanceToSpawnBroodAt66Plus)
+            {
+                enemyToSpawn = broodEnemyPrefab;
+            }
+            else if (insanity >= 33f && explodingEnemyPrefab != null)
+            {
+                // fallback to existing 33+ logic
+                if (Random.value < chanceToSpawnExploderAt33Plus)
+                    enemyToSpawn = explodingEnemyPrefab;
+            }
+        }
+        else if (insanity >= 33f && explodingEnemyPrefab != null)
+        {
+            if (Random.value < chanceToSpawnExploderAt33Plus)
+                enemyToSpawn = explodingEnemyPrefab;
         }
 
-        // 3. Spawn it
+        // 3) Spawn it
         Instantiate(enemyToSpawn, spawnPos, Quaternion.identity);
     }
 
@@ -59,17 +78,5 @@ public class EnemySpawner : MonoBehaviour
         float insanityPercent = insanityManager.insanity / insanityManager.maxInsanity;
         float delay = Mathf.Lerp(spawnRateAtZeroInsanity, spawnRateAtMaxInsanity, insanityPercent);
         nextSpawnTime = Time.time + delay;
-    }
-
-    // Visualize the spawn ring in the Editor
-    void OnDrawGizmosSelected()
-    {
-        if (playerTransform != null)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(playerTransform.position, minSpawnDistance);
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(playerTransform.position, maxSpawnDistance);
-        }
     }
 }

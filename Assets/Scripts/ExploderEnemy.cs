@@ -11,6 +11,22 @@ public class ExploderEnemy : MonoBehaviour
     private Transform player;
     private bool hasExploded = false;
 
+
+    private Rigidbody2D rb;
+    private Collider2D myCol;
+
+    private readonly Collider2D[] hits = new Collider2D[24];
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        myCol = GetComponent<Collider2D>();
+
+        rb.gravityScale = 0f;
+        rb.freezeRotation = true;
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+    }
+
     void Start()
     {
         // Find the player automatically by Tag
