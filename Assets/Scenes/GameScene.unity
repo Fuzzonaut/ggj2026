@@ -155,6 +155,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InsanityManager
 <<<<<<< Updated upstream
   insanity: 100
+=======
+  insanity: 33
+>>>>>>> Stashed changes
   maxInsanity: 100
   increaseRate: 0.7
   insanitySlider: {fileID: 1753401796}
