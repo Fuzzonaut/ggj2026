@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0073750857370148959ad9da1d5707d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InsanityManager
-  insanity: 0
+  insanity: 33
   maxInsanity: 100
   increaseRate: 0.7
   insanitySlider: {fileID: 1753401796}
