@@ -187,6 +187,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8444215950316568996, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
   m_PrefabInstance: {fileID: 2037997451}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &524260888 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7459731591373125834, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
+  m_PrefabInstance: {fileID: 8677845032369614738}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &588056195
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,6 +919,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6739323808483089403, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
   m_PrefabInstance: {fileID: 2037997451}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2115564688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172239614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39961a83a69c9cb4d8d16ea36d9d3030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth2D
+  maxHealth: 100
+  currentHealth: 0
+  collisionDamage: 10
+  damageCooldown: 0.5
+  healthText: {fileID: 524260888}
 --- !u!1001 &5412703267083230681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1235,10 +1263,20 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1185529633}
+    - target: {fileID: 6598545985732652461, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
+      propertyPath: m_Name
+      value: Health Text
+      objectReference: {fileID: 0}
     - target: {fileID: 7305198139751416831, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1185529633}
+    - target: {fileID: 7459731591373125834, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
+      propertyPath: m_text
+      value: 'HP:100
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 7970777410865393684, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
