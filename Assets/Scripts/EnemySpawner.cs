@@ -3,15 +3,11 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("References")]
-    public GameObject enemyPrefab;
+    public GameObject standardEnemyPrefab;   // OLD ENEMY
+    public GameObject explodingEnemyPrefab;  // NEW ENEMY 
     
-    // Delilik verisini okumak için Manager
     public InsanityManager insanityManager; 
-    
-    // Konumunu kontrol etmek için Player
     public Transform playerTransform; 
-    
-    // Düşmanların doğacağı alan
     public Collider2D spawnArea; 
 
     [Header("Spawn Settings")]
@@ -31,22 +27,36 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
+        // 1. Decide WHICH enemy to spawn
+        GameObject enemyToSpawn = standardEnemyPrefab;
+
+        // If Insanity is 66 or higher...
+        if (insanityManager.insanity >= 66)
+        {
+            // ...flip a coin (50% chance). 
+            // If you want ONLY exploders after 66, remove this if statement.
+            if (Random.value > 0.5f) 
+            {
+                enemyToSpawn = explodingEnemyPrefab;
+            }
+        }
+
+        // 2. Decide WHERE to spawn (Same logic as before)
         Bounds bounds = spawnArea.bounds;
         Vector2 spawnPos;
-        
         int attempts = 0;
+        
         do 
         {
-            // Rastgele bir konum seç
             float randomX = Random.Range(bounds.min.x, bounds.max.x);
             float randomY = Random.Range(bounds.min.y, bounds.max.y);
             spawnPos = new Vector2(randomX, randomY);
             attempts++;
         } 
-        
         while (Vector2.Distance(spawnPos, playerTransform.position) < 3f && attempts < 10);
 
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        // 3. Spawn it
+        Instantiate(enemyToSpawn, spawnPos, Quaternion.identity);
     }
 
     void CalculateNextSpawnTime()
