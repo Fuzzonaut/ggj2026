@@ -431,9 +431,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6232717879688141423, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2115564681}
     - target: {fileID: 9019013451445208664, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 9019013451445208664, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9019013451445208664, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -442,9 +454,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9019013451445208664, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1303906388}
-    - targetCorrespondingSourceObject: {fileID: 9019013451445208664, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1303906387}
   m_SourcePrefab: {fileID: 100100000, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
 --- !u!1 &1185529632
 GameObject:
@@ -496,20 +505,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9019013451445208664, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
   m_PrefabInstance: {fileID: 645893645}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1303906387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303906382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267e5b153f0d123478afeb11aa93b9aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyFollow
-  player: {fileID: 0}
-  moveSpeed: 2.5
 --- !u!50 &1303906388
 Rigidbody2D:
   serializedVersion: 5
