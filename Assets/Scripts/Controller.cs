@@ -27,16 +27,8 @@ public class Controller : MonoBehaviour
     public GameObject areaEffectPrefab;     // Optional: Drag a particle effect here
     private float nextAreaAttackTime = 0f;
 
-    public float timeToStartAreaAttack = 0.5f;
+    public float timeToStartAreaAttack = 0.5f; 
     private float holdTimer = 0f;
-
-    [Header("Projectile Shoot (Mouse Button 1)")]
-    public float shootThreshold = 66f;
-    public Transform shootPoint;
-    public GameObject projectilePrefab;
-    public float projectileSpeed = 12f;
-    public float shootCooldown = 0.2f;
-    private float nextShootTime = 0f;
 
     [Header("Knockback")]
     [SerializeField] private float knockbackForce = 8f;
@@ -54,29 +46,28 @@ public class Controller : MonoBehaviour
         if (!isKnocked)
             Movement();
 
-        // Hold left click for area attack
         if (Input.GetMouseButton(0))
         {
             holdTimer += Time.deltaTime;
         }
         else
         {
-            holdTimer = 0f;
+            holdTimer = 0f; // Reset if we let go
         }
-
         if (Input.GetMouseButton(0) && holdTimer >= timeToStartAreaAttack)
         {
-            if (insanityManager != null && insanityManager.insanity >= areaAttackThreshold)
+            
+            if (Input.GetMouseButton(0) && insanityManager != null && insanityManager.insanity >= areaAttackThreshold)
+        {
+            if (Time.time >= nextAreaAttackTime)
             {
-                if (Time.time >= nextAreaAttackTime)
-                {
-                    PerformAreaAttack();
-                    nextAreaAttackTime = Time.time + areaCooldown;
-                }
+                PerformAreaAttack();
+                nextAreaAttackTime = Time.time + areaCooldown;
             }
         }
 
-        // Tap left click for punch
+        }
+        
         if (Input.GetMouseButtonDown(0) && canHit)
         {
             Punch();
@@ -87,12 +78,6 @@ public class Controller : MonoBehaviour
         {
             canHit = true;
             holdTimer = 0f;
-        }
-
-        // Right click shooting (Mouse Button 1)
-        if (Input.GetMouseButtonDown(1))
-        {
-            TryShootProjectile();
         }
     }
 
@@ -115,42 +100,20 @@ public class Controller : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(0f, 0f, snapped);
     }
-
-    void TryShootProjectile()
-    {
-        if (insanityManager == null) return;
-        if (insanityManager.insanity < shootThreshold) return;
-        if (projectilePrefab == null || shootPoint == null) return;
-        if (Time.time < nextShootTime) return;
-
-        nextShootTime = Time.time + shootCooldown;
-
-        GameObject proj = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
-
-        Rigidbody2D prb = proj.GetComponent<Rigidbody2D>();
-        if (prb != null)
-        {
-            // In your rotation system, "up" is the forward direction (because you used -90).
-            Vector2 dir = shootPoint.up;
-            prb.linearVelocity = dir * projectileSpeed;
-        }
-        else
-        {
-            Debug.LogWarning("Projectile prefab has no Rigidbody2D!");
-        }
-    }
-
     void PerformAreaAttack()
     {
         Debug.Log("BOOM! Area Attack Triggered.");
 
+        // 1. Visual Effect (Optional)
         if (areaEffectPrefab != null)
         {
             Instantiate(areaEffectPrefab, transform.position, Quaternion.identity);
         }
 
+        // 2. Detect all colliders within radius
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, areaRadius);
 
+        // 3. Loop through them and deal damage
         foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy.CompareTag("Enemy"))
@@ -169,7 +132,7 @@ public class Controller : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, areaRadius);
     }
-
+    
     void Punch()
     {
         GameObject punch = Instantiate(
@@ -185,6 +148,7 @@ public class Controller : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            // Best direction for collisions (more reliable than positions):
             Vector2 dir = collision.GetContact(0).normal;
 
             Debug.Log("Knockback Dir: " + dir);
