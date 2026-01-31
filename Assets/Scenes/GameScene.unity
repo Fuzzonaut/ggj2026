@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &172239614 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3325351127388302440, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
-  m_PrefabInstance: {fileID: 2037997451}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &195960404
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 195960406}
   - component: {fileID: 195960405}
+  - component: {fileID: 195960407}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -153,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0073750857370148959ad9da1d5707d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InsanityManager
-  insanity: 66
+  insanity: 33
   maxInsanity: 100
   increaseRate: 0.7
   insanitySlider: {fileID: 1753401796}
@@ -172,11 +168,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &195960407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195960404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780900126f4394de3aaba77d86514dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
+  score: 0
+  scoreText: {fileID: 1511081867}
 --- !u!4 &277320064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8444215950316568996, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
   m_PrefabInstance: {fileID: 2037997451}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &524260888 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7459731591373125834, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
+  m_PrefabInstance: {fileID: 8677845032369614738}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &588056195
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +478,55 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1303906388}
   m_SourcePrefab: {fileID: 100100000, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
+--- !u!1 &959188706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 959188708}
+  - component: {fileID: 959188707}
+  m_Layer: 0
+  m_Name: PillSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &959188707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959188706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35009a360ad8d4b9f8759bc30901c61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PillSpawner
+  pillPrefab: {fileID: 3516160320251857957, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+  playerTransform: {fileID: 2115564681}
+  spawnInterval: 10
+  minSpawnDistance: 5
+  maxSpawnDistance: 12
+--- !u!4 &959188708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959188706}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.91103, y: 2.30259, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1036849054
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +753,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7497091884027041235, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
   m_PrefabInstance: {fileID: 8677845032369614738}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1511081867 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6553169829964996716, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
+  m_PrefabInstance: {fileID: 8677845032369614738}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &1753401796 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7540858738386250344, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
@@ -770,7 +851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   standardEnemyPrefab: {fileID: 9019013451445208664, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
   explodingEnemyPrefab: {fileID: 2976907400223634172, guid: 5e24e55f8d8294d62b5f790432ebdb31, type: 3}
-  broodEnemyPrefab: {fileID: 0}
+  broodEnemyPrefab: {fileID: 894713983737834903, guid: 005774e81dc393e48a6804db48040fe5, type: 3}
   insanityManager: {fileID: 195960405}
   playerTransform: {fileID: 2115564681}
   minSpawnDistance: 10
@@ -802,6 +883,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2753383088175195825, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 524260888}
     - target: {fileID: 3325351127388302440, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
       propertyPath: m_Name
       value: Player
@@ -876,30 +961,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6739323808483089403, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1036849055}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3325351127388302440, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2115564688}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
 --- !u!4 &2115564681 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6739323808483089403, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
   m_PrefabInstance: {fileID: 2037997451}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2115564688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172239614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf69d82b4d3d1db489f9bd11191018f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunSFX
-  audioSource: {fileID: 0}
-  gunShotSound: {fileID: 8300000, guid: 3061c7b9b32d894478e4126ccce25ca3, type: 3}
 --- !u!1001 &5412703267083230681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -965,17 +1033,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3088009072547401115, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_Size.x
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 3088009072547401115, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_Size.y
+      value: 0.48
+      objectReference: {fileID: 0}
     - target: {fileID: 3516160320251857957, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
       propertyPath: m_Name
       value: Pills
       objectReference: {fileID: 0}
     - target: {fileID: 5158991167611716426, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7830741
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158991167611716426, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.68553525
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158991167611716426, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.3076
+      value: 0.32554
       objectReference: {fileID: 0}
     - target: {fileID: 5158991167611716426, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2811
+      value: 1.29308
       objectReference: {fileID: 0}
     - target: {fileID: 5158991167611716426, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1008,6 +1092,34 @@ PrefabInstance:
     - target: {fileID: 5158991167611716426, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_Size.x
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_Size.y
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6445809573977748145, guid: a59bf32c4e42847e3b2f78933c02d8f6, type: 3}
+    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1183,6 +1295,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1185529633}
+    - target: {fileID: 6598545985732652461, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
+      propertyPath: m_Name
+      value: HealthText
+      objectReference: {fileID: 0}
     - target: {fileID: 7305198139751416831, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
