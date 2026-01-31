@@ -1,28 +1,44 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Punch : MonoBehaviour
 {
-    public AudioSource audioSource;
+    [Header("Damage")]
+    public int punchDamage = 25;
+
+    [Header("Sound")]
     public AudioClip punchSound;
 
-    [ContextMenu("Play Punch Sound")]
-    public void PlayPunch()
+    private AudioSource playerAudio;
+    private bool hasHit = false;
+
+    void Awake()
     {
-        audioSource.PlayOneShot(punchSound);
+        // find player's AudioSource
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+            playerAudio = player.GetComponent<AudioSource>();
+
+        if (playerAudio == null)
+            Debug.LogError("Punch: Player AudioSource NOT found!", this);
     }
-    public int punchDamage = 25;
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
-        {
-            EnemyHealth enemy = other.GetComponent<EnemyHealth>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(punchDamage);
-            }
+        if (hasHit) return;
 
-        }
+        EnemyHealth enemy = other.GetComponentInParent<EnemyHealth>();
+        if (enemy == null) return;
 
+        hasHit = true;
+
+        // 🔊 play sound from PLAYER
+        if (playerAudio != null && punchSound != null)
+            playerAudio.PlayOneShot(punchSound);
+
+        // 💥 damage
+        enemy.TakeDamage(punchDamage);
+
+        // 🧹 cleanup punch hitbox
+        Destroy(gameObject, 0.1f);
     }
 }
