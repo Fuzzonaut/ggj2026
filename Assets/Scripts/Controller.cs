@@ -144,7 +144,7 @@ public class Controller : MonoBehaviour
 
     void PerformAreaAttack()
     {
-        Debug.Log("BOOM! Area Attack Triggered.");
+        
 
         if (areaEffectPrefab != null)
         {
