@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0073750857370148959ad9da1d5707d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InsanityManager
-  insanity: 66
+  insanity: 33
   maxInsanity: 100
   increaseRate: 0.7
   insanitySlider: {fileID: 1753401796}
@@ -867,20 +867,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6739323808483089403, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
   m_PrefabInstance: {fileID: 2037997451}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2115564688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172239614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf69d82b4d3d1db489f9bd11191018f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunSFX
-  audioSource: {fileID: 0}
-  gunShotSound: {fileID: 8300000, guid: 3061c7b9b32d894478e4126ccce25ca3, type: 3}
 --- !u!1001 &5412703267083230681
 PrefabInstance:
   m_ObjectHideFlags: 0
