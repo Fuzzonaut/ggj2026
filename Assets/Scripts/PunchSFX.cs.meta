@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 9b54629f8ed111f4c9f6e9cb01073723
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - audioSource: {instanceID: 0}
+  - punchSound: {fileID: 8300000, guid: e5ecc98ff40556543b77c8c2aa090822, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
