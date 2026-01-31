@@ -688,6 +688,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5919895462683201650, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
+      propertyPath: insanityManager
+      value: 
+      objectReference: {fileID: 195960405}
+    - target: {fileID: 5919895462683201650, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
+      propertyPath: areaEffectPrefab
+      value: 
+      objectReference: {fileID: 440351501480242325, guid: b4cf57ffbe18649a48fec802db89adbb, type: 3}
     - target: {fileID: 6739323808483089403, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.98947

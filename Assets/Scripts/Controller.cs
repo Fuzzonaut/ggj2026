@@ -9,12 +9,23 @@ public class Controller : MonoBehaviour
 
     [SerializeField] private float speed = 5.0f;
 
+    [Header("Referance")]
+    public InsanityManager insanityManager;
+
     [Header("Punch")]
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject punchPrefab;
     public float punchLifetime = 0.2f;
 
     private bool canHit = true;
+
+    [Header("AreaAttack")]
+    public float areaAttackThreshold = 33f; // Min insanity needed
+    public float areaRadius = 3.5f;         // Range of attack
+    public int areaDamage = 50;             // Damage amount
+    public float areaCooldown = 1.0f;       // Time between explosions
+    public GameObject areaEffectPrefab;     // Optional: Drag a particle effect here
+    private float nextAreaAttackTime = 0f;
 
     [Header("Knockback")]
     [SerializeField] private float knockbackForce = 8f;
@@ -32,7 +43,15 @@ public class Controller : MonoBehaviour
         if (!isKnocked)
             Movement();
 
-        if (Input.GetMouseButtonDown(0) && canHit)
+        if (Input.GetMouseButton(0) && insanityManager != null && insanityManager.insanity >= areaAttackThreshold)
+        {
+            if (Time.time >= nextAreaAttackTime)
+            {
+                PerformAreaAttack();
+                nextAreaAttackTime = Time.time + areaCooldown;
+            }
+        }
+        else if (Input.GetMouseButtonDown(0) && canHit)
         {
             Punch();
             canHit = false;
@@ -63,7 +82,39 @@ public class Controller : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(0f, 0f, snapped);
     }
+    void PerformAreaAttack()
+    {
+        Debug.Log("BOOM! Area Attack Triggered.");
 
+        // 1. Visual Effect (Optional)
+        if (areaEffectPrefab != null)
+        {
+            Instantiate(areaEffectPrefab, transform.position, Quaternion.identity);
+        }
+
+        // 2. Detect all colliders within radius
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, areaRadius);
+
+        // 3. Loop through them and deal damage
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            if (enemy.CompareTag("Enemy"))
+            {
+                EnemyHealth healthScript = enemy.GetComponent<EnemyHealth>();
+                if (healthScript != null)
+                {
+                    healthScript.TakeDamage(areaDamage);
+                }
+            }
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, areaRadius);
+    }
+    
     void Punch()
     {
         GameObject punch = Instantiate(
