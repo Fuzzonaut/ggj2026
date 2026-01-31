@@ -102,15 +102,6 @@ public class EnemyFollow : MonoBehaviour
             rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
     }
 
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, separationRadius);
+ 
 
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, stopDistance);
-
-        Gizmos.color = Color.gray;
-        Gizmos.DrawWireSphere(transform.position, slowDistance);
-    }
 }
