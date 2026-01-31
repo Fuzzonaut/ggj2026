@@ -725,7 +725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   standardEnemyPrefab: {fileID: 9019013451445208664, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
   explodingEnemyPrefab: {fileID: 2976907400223634172, guid: 5e24e55f8d8294d62b5f790432ebdb31, type: 3}
-  broodEnemyPrefab: {fileID: 0}
+  broodEnemyPrefab: {fileID: 894713983737834903, guid: 005774e81dc393e48a6804db48040fe5, type: 3}
   insanityManager: {fileID: 195960405}
   playerTransform: {fileID: 2115564681}
   minSpawnDistance: 10

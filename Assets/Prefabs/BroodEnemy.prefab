@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5449170612686921467}
   - component: {fileID: 7409214392965372831}
   - component: {fileID: 2664309913689297378}
+  - component: {fileID: 93086446071379459}
   m_Layer: 3
   m_Name: BroodEnemy
   m_TagString: Enemy
@@ -179,11 +180,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d42c525f5d77f844a9515896f5fbe36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  baseEnemyPrefab: {fileID: 0}
+  baseEnemyPrefab: {fileID: 9019013451445208664, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
   herdSize: 5
   timeBetweenBatches: 3
   firstBatchDelay: 0.5
   spawnRadius: 2
   minionScaleMultiplier: 0.65
-  minionDamageMultiplier: 0.5
   maxAliveMinions: 20
+  speed: 4
+  stopDistance: 6
+  resumeDistance: 8
+--- !u!114 &93086446071379459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894713983737834903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe0b0d0bceedfd643a7ffbe4a481fc1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 100
