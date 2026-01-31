@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1749009254694901660}
   - component: {fileID: 4120240377371484393}
   - component: {fileID: 8553073540658479176}
+  - component: {fileID: 2753383088175195825}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -119,6 +120,13 @@ MonoBehaviour:
   areaDamage: 50
   areaCooldown: 1
   areaEffectPrefab: {fileID: 0}
+  timeToStartAreaAttack: 0.5
+  explosionSFX: {fileID: 0}
+  shootThreshold: 66
+  shootPoint: {fileID: 0}
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 12
+  shootCooldown: 0.2
   knockbackForce: 8
   knockbackDuration: 0.15
 --- !u!50 &4769220704975576601
@@ -309,6 +317,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PunchSFX
   audioSource: {fileID: 4120240377371484393}
   punchSound: {fileID: 8300000, guid: e5ecc98ff40556543b77c8c2aa090822, type: 3}
+--- !u!114 &2753383088175195825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325351127388302440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39961a83a69c9cb4d8d16ea36d9d3030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth2D
+  maxHealth: 100
+  currentHealth: 0
+  collisionDamage: 10
+  damageCooldown: 0.5
+  healthText: {fileID: 0}
 --- !u!1 &4144036960128394135
 GameObject:
   m_ObjectHideFlags: 0

@@ -838,6 +838,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2753383088175195825, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 524260888}
     - target: {fileID: 3325351127388302440, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
       propertyPath: m_Name
       value: Player
@@ -919,23 +923,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6739323808483089403, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
   m_PrefabInstance: {fileID: 2037997451}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2115564688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172239614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39961a83a69c9cb4d8d16ea36d9d3030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth2D
-  maxHealth: 100
-  currentHealth: 0
-  collisionDamage: 10
-  damageCooldown: 0.5
-  healthText: {fileID: 524260888}
 --- !u!1001 &5412703267083230681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1265,7 +1252,7 @@ PrefabInstance:
       objectReference: {fileID: 1185529633}
     - target: {fileID: 6598545985732652461, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
       propertyPath: m_Name
-      value: Health Text
+      value: HealthText
       objectReference: {fileID: 0}
     - target: {fileID: 7305198139751416831, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
