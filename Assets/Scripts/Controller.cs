@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Controller : MonoBehaviour
 {
@@ -8,14 +9,17 @@ public class Controller : MonoBehaviour
 
     [SerializeField] private float speed = 5.0f;
 
+    [Header("Punch")]
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject punchPrefab;
-
     public float punchLifetime = 0.2f;
-    public float punchCooldown = 0.4f;   // ⬅ time between punches
 
-    private float nextPunchTime = 0f;     // ⬅ internal timer
     private bool canHit = true;
+
+    [Header("Knockback")]
+    [SerializeField] private float knockbackForce = 8f;
+    [SerializeField] private float knockbackDuration = 0.15f;
+    private bool isKnocked = false;
 
     void Awake()
     {
@@ -25,7 +29,9 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
-        Movement();
+        if (!isKnocked)
+            Movement();
+
         if (Input.GetMouseButtonDown(0) && canHit)
         {
             Punch();
@@ -37,7 +43,6 @@ public class Controller : MonoBehaviour
             canHit = true;
         }
     }
-
 
     void Movement()
     {
@@ -68,5 +73,31 @@ public class Controller : MonoBehaviour
         );
 
         Destroy(punch, punchLifetime);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // Best direction for collisions (more reliable than positions):
+            Vector2 dir = collision.GetContact(0).normal;
+
+            Debug.Log("Knockback Dir: " + dir);
+
+            StopAllCoroutines();
+            StartCoroutine(KnockbackRoutine(dir));
+        }
+    }
+
+    private IEnumerator KnockbackRoutine(Vector2 dir)
+    {
+        isKnocked = true;
+
+        rb.linearVelocity = Vector2.zero;
+        rb.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(knockbackDuration);
+
+        isKnocked = false;
     }
 }
