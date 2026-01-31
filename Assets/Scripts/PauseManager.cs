@@ -5,11 +5,25 @@ public class PauseManager : MonoBehaviour
 {
     public GameObject pausePanel;
 
+    
+    void Start()
+    {
+        
+        Resume();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Pause();
+            if (pausePanel.activeSelf)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
         }
     }
 
@@ -31,4 +45,3 @@ public class PauseManager : MonoBehaviour
         SceneManager.LoadScene("PlayMenu");
     }
 }
-

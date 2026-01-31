@@ -30,6 +30,8 @@ public class Controller : MonoBehaviour
     public float timeToStartAreaAttack = 0.5f;
     private float holdTimer = 0f;
 
+    public ExplosionSFX explosionSFX;
+
     [Header("Projectile Shoot (Mouse Button 1)")]
     public float shootThreshold = 66f;
     public Transform shootPoint;
@@ -147,6 +149,11 @@ public class Controller : MonoBehaviour
         if (areaEffectPrefab != null)
         {
             Instantiate(areaEffectPrefab, transform.position, Quaternion.identity);
+        }
+
+        if (explosionSFX != null)
+        {
+            explosionSFX.PlayExplosion();
         }
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, areaRadius);
