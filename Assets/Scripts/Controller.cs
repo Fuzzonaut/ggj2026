@@ -27,6 +27,9 @@ public class Controller : MonoBehaviour
     public GameObject areaEffectPrefab;     // Optional: Drag a particle effect here
     private float nextAreaAttackTime = 0f;
 
+    public float timeToStartAreaAttack = 0.5f; 
+    private float holdTimer = 0f;
+
     [Header("Knockback")]
     [SerializeField] private float knockbackForce = 8f;
     [SerializeField] private float knockbackDuration = 0.15f;
@@ -43,7 +46,18 @@ public class Controller : MonoBehaviour
         if (!isKnocked)
             Movement();
 
-        if (Input.GetMouseButton(0) && insanityManager != null && insanityManager.insanity >= areaAttackThreshold)
+        if (Input.GetMouseButton(0))
+        {
+            holdTimer += Time.deltaTime;
+        }
+        else
+        {
+            holdTimer = 0f; // Reset if we let go
+        }
+        if (Input.GetMouseButton(0) && holdTimer >= timeToStartAreaAttack)
+        {
+            
+            if (Input.GetMouseButton(0) && insanityManager != null && insanityManager.insanity >= areaAttackThreshold)
         {
             if (Time.time >= nextAreaAttackTime)
             {
@@ -51,7 +65,10 @@ public class Controller : MonoBehaviour
                 nextAreaAttackTime = Time.time + areaCooldown;
             }
         }
-        else if (Input.GetMouseButtonDown(0) && canHit)
+
+        }
+        
+        if (Input.GetMouseButtonDown(0) && canHit)
         {
             Punch();
             canHit = false;
@@ -60,6 +77,7 @@ public class Controller : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             canHit = true;
+            holdTimer = 0f;
         }
     }
 
