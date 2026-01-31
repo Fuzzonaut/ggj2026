@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &172239614 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3325351127388302440, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
+  m_PrefabInstance: {fileID: 2037997451}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &195960404
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +222,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 60ebbcbf45e1251499654071087f0718, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.218
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -746,7 +751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   standardEnemyPrefab: {fileID: 9019013451445208664, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
   explodingEnemyPrefab: {fileID: 2976907400223634172, guid: 5e24e55f8d8294d62b5f790432ebdb31, type: 3}
-  broodEnemyPrefab: {fileID: 0}
+  broodEnemyPrefab: {fileID: 894713983737834903, guid: 005774e81dc393e48a6804db48040fe5, type: 3}
   insanityManager: {fileID: 195960405}
   playerTransform: {fileID: 2115564681}
   minSpawnDistance: 10
@@ -852,13 +857,30 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6739323808483089403, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1036849055}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3325351127388302440, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2115564688}
   m_SourcePrefab: {fileID: 100100000, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
 --- !u!4 &2115564681 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6739323808483089403, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
   m_PrefabInstance: {fileID: 2037997451}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2115564688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172239614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf69d82b4d3d1db489f9bd11191018f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunSFX
+  audioSource: {fileID: 0}
+  gunShotSound: {fileID: 8300000, guid: 3061c7b9b32d894478e4126ccce25ca3, type: 3}
 --- !u!1001 &5412703267083230681
 PrefabInstance:
   m_ObjectHideFlags: 0
