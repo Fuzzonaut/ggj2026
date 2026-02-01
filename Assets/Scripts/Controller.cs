@@ -4,33 +4,31 @@ using System.Collections;
 public class Controller : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private Collider2D col;
-    private Vector2 mousePos;
     private Animator anim;
+    private Camera mainCam; // Need camera to find mouse
+
     [SerializeField] private float speed = 5.0f;
 
-    [Header("Referance")]
+    [Header("References")]
     public InsanityManager insanityManager;
+    public ExplosionSFX explosionSFX;
 
     [Header("Punch")]
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject punchPrefab;
     public float punchLifetime = 0.2f;
-
     private bool canHit = true;
 
     [Header("AreaAttack")]
-    public float areaAttackThreshold = 33f; // Min insanity needed
-    public float areaRadius = 3.5f;         // Range of attack
-    public int areaDamage = 50;             // Damage amount
-    public float areaCooldown = 1.0f;       // Time between explosions
-    public GameObject areaEffectPrefab;     // Optional: Drag a particle effect here
+    public float areaAttackThreshold = 33f; 
+    public float areaRadius = 3.5f;        
+    public int areaDamage = 50;            
+    public float areaCooldown = 1.0f;      
+    public GameObject areaEffectPrefab;    
     private float nextAreaAttackTime = 0f;
 
     public float timeToStartAreaAttack = 0.5f;
     private float holdTimer = 0f;
-
-    public ExplosionSFX explosionSFX;
 
     [Header("Projectile Shoot (Mouse Button 1)")]
     public float shootThreshold = 66f;
@@ -45,20 +43,36 @@ public class Controller : MonoBehaviour
     [SerializeField] private float knockbackDuration = 0.15f;
     private bool isKnocked = false;
 
+    // NEW: We track where we are looking separately from moving
+    private Vector2 lookDirection = Vector2.down; 
+    private Vector2 mousePos;
+    
+    public float attackPointOffset = 1.0f; 
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<Collider2D>();
-
         anim = GetComponent<Animator>();
+        mainCam = Camera.main; // Cache the camera for better performance
     }
 
     void Update()
     {
+        // 1. Calculate Mouse Position first (We need this for everything)
+        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+
+        // 2. Calculate the direction from Player -> Mouse
+        Vector2 directionToMouse = (mousePos - (Vector2)transform.position).normalized;
+        lookDirection = directionToMouse;
+
         if (!isKnocked)
             Movement();
 
-        // Hold left click for area attack
+        // 3. Update Gun/Fist Rotation to face Mouse
+        UpdateAttackPointRotation();
+
+        // --- ATTACK LOGIC ---
+
         if (Input.GetMouseButton(0))
         {
             holdTimer += Time.deltaTime;
@@ -80,7 +94,6 @@ public class Controller : MonoBehaviour
             }
         }
 
-        // Tap left click for punch
         if (Input.GetMouseButtonDown(0) && canHit)
         {
             Punch();
@@ -93,7 +106,6 @@ public class Controller : MonoBehaviour
             holdTimer = 0f;
         }
 
-        // Right click shooting (Mouse Button 1)
         if (Input.GetMouseButtonDown(1))
         {
             TryShootProjectile();
@@ -102,32 +114,53 @@ public class Controller : MonoBehaviour
 
     void Movement()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxisRaw("Horizontal"); 
+        float verticalInput = Input.GetAxisRaw("Vertical");
 
+        // 1. Move based on Keyboard (WASD)
         Vector2 movement = new Vector2(horizontalInput, verticalInput).normalized;
         rb.linearVelocity = movement * speed;
 
-    if (anim != null)
-    {
-        // 1. Is the player pressing keys?
-        if (movement.magnitude > 0.01f)
+        // 2. Animate based on MOUSE (Look Direction)
+        if (anim != null)
         {
-            // Update the animation to face the correct direction
-            anim.SetFloat("InputX", movement.x);
-            anim.SetFloat("InputY", movement.y);
-            
-            // Unpause the animation so the legs move
-            anim.speed = 1; 
-        }
-        else
-        {
-            // 2. Player stopped pressing keys
-            // Pause the animation so the character "freezes" in the last known frame
-            // This acts as your "Idle" without needing a separate animation
-            anim.speed = 0; 
+            // Update the Blend Tree to face the mouse
+            anim.SetFloat("InputX", lookDirection.x);
+            anim.SetFloat("InputY", lookDirection.y);
+
+            // 3. Handle Animation Speed (Legs moving)
+            // If we are moving via keyboard, play animation. 
+            // If standing still but looking around, freeze animation frame.
+            if (movement.magnitude > 0.01f)
+            {
+                anim.speed = 1; // Play "Run" animation (Strafing)
+            }
+            else
+            {
+                anim.speed = 0; // Freeze frame (Standing still facing mouse)
+            }
         }
     }
+
+    void UpdateAttackPointRotation()
+    {
+        // Use lookDirection (Mouse) instead of movement direction
+        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.Euler(0, 0, angle - 90);
+
+        Vector3 offsetPosition = (Vector3)lookDirection * attackPointOffset;
+
+        if (shootPoint != null)
+        {
+            shootPoint.position = transform.position + offsetPosition;
+            shootPoint.rotation = rotation;
+        }
+
+        if (firingPoint != null)
+        {
+            firingPoint.position = transform.position + offsetPosition;
+            firingPoint.rotation = rotation;
+        }
     }
 
     void TryShootProjectile()
@@ -144,41 +177,31 @@ public class Controller : MonoBehaviour
         Rigidbody2D prb = proj.GetComponent<Rigidbody2D>();
         if (prb != null)
         {
-            // In your rotation system, "up" is the forward direction (because you used -90).
-            Vector2 dir = shootPoint.up;
-            prb.linearVelocity = dir * projectileSpeed;
+            // Shoot towards the mouse (shootPoint.up is now facing mouse)
+            prb.linearVelocity = shootPoint.up * projectileSpeed;
         }
-        else
-        {
-            Debug.LogWarning("Projectile prefab has no Rigidbody2D!");
-        }
+    }
+
+    // ... (Keep Punch, AreaAttack, DrawGizmos, and Knockback logic exactly the same below) ...
+    
+    void Punch()
+    {
+        GameObject punch = Instantiate(punchPrefab, firingPoint.position, firingPoint.rotation);
+        Destroy(punch, punchLifetime);
     }
 
     void PerformAreaAttack()
     {
-        
-
-        if (areaEffectPrefab != null)
-        {
-            Instantiate(areaEffectPrefab, transform.position, Quaternion.identity);
-        }
-
-        if (explosionSFX != null)
-        {
-            explosionSFX.PlayExplosion();
-        }
+        if (areaEffectPrefab != null) Instantiate(areaEffectPrefab, transform.position, Quaternion.identity);
+        if (explosionSFX != null) explosionSFX.PlayExplosion();
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, areaRadius);
-
         foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy.CompareTag("Enemy"))
             {
                 EnemyHealth healthScript = enemy.GetComponent<EnemyHealth>();
-                if (healthScript != null)
-                {
-                    healthScript.TakeDamage(areaDamage);
-                }
+                if (healthScript != null) healthScript.TakeDamage(areaDamage);
             }
         }
     }
@@ -189,25 +212,11 @@ public class Controller : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, areaRadius);
     }
 
-    void Punch()
-    {
-        GameObject punch = Instantiate(
-            punchPrefab,
-            firingPoint.position,
-            firingPoint.rotation
-        );
-
-        Destroy(punch, punchLifetime);
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Vector2 dir = collision.GetContact(0).normal;
-
-            Debug.Log("Knockback Dir: " + dir);
-
             StopAllCoroutines();
             StartCoroutine(KnockbackRoutine(dir));
         }
@@ -216,12 +225,9 @@ public class Controller : MonoBehaviour
     private IEnumerator KnockbackRoutine(Vector2 dir)
     {
         isKnocked = true;
-
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
-
         yield return new WaitForSeconds(knockbackDuration);
-
         isKnocked = false;
     }
 }
