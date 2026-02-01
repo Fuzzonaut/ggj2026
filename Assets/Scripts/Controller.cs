@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.Audio;
 
 public class Controller : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class Controller : MonoBehaviour
 
     [Header("References")]
     public InsanityManager insanityManager;
-    public ExplosionSFX explosionSFX;
+    public AudioClip explosionSFX;
 
     [Header("Punch")]
     [SerializeField] private Transform firingPoint;
@@ -42,6 +43,10 @@ public class Controller : MonoBehaviour
     [SerializeField] private float knockbackForce = 8f;
     [SerializeField] private float knockbackDuration = 0.15f;
     private bool isKnocked = false;
+
+
+
+    public AudioSource audioSource;
 
     // NEW: We track where we are looking separately from moving
     private Vector2 lookDirection = Vector2.down; 
@@ -206,7 +211,7 @@ public class Controller : MonoBehaviour
 
         if (explosionSFX != null)
         {
-            explosionSFX.PlayExplosion();
+            audioSource.PlayOneShot(explosionSFX);
         }
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, areaRadius);
