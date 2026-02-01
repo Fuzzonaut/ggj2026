@@ -29,5 +29,10 @@ public class InsanityManager : MonoBehaviour
         
         
         if (insanity < 0) insanity = 0;
+        if (insanitySlider != null)
+    {
+        insanitySlider.value = insanity;
     }
 }
+    }
+

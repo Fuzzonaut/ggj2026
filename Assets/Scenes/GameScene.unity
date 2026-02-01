@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0073750857370148959ad9da1d5707d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InsanityManager
-  insanity: 33
+  insanity: 0
   maxInsanity: 100
   increaseRate: 0.7
   insanitySlider: {fileID: 999794796}
@@ -1284,11 +1284,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3088009072547401115, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
       propertyPath: m_Size.x
-      value: 0.26
+      value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: 3088009072547401115, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
       propertyPath: m_Size.y
-      value: 0.48
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 3516160320251857957, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
       propertyPath: m_Name
@@ -1341,34 +1341,6 @@ PrefabInstance:
     - target: {fileID: 5158991167611716426, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
-      propertyPath: m_Size.x
-      value: 0.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
-      propertyPath: m_Size.y
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -6445809573977748145, guid: a59bf32c4e42847e3b2f78933c02d8f6, type: 3}
-    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5166435703379062673, guid: 1a882160270a60e4e82a444bb4be4401, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1538,11 +1510,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4784842609183598377, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -765.3
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4784842609183598377, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 508.8
+      value: 466
       objectReference: {fileID: 0}
     - target: {fileID: 5815982477329911406, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1560,7 +1532,8 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1185529633}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 206047713152748496, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
