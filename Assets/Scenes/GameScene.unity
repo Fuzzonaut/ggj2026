@@ -454,10 +454,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3725821477941501199, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 565ceb03db24447d1905aef4044aa47d, type: 2}
     - target: {fileID: 6232717879688141423, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2115564681}
+    - target: {fileID: 7543157902138215214, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3242751172929733920, guid: 1fbe4f4fc9f494610b784c3bb4f14990, type: 3}
     - target: {fileID: 9019013451445208664, guid: a2a95e184a49e0d43a9e01732e7028db, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -1037,6 +1045,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExploderEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3005991778643498372, guid: 5e24e55f8d8294d62b5f790432ebdb31, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2115564681}
     - target: {fileID: 3634592626329522302, guid: 5e24e55f8d8294d62b5f790432ebdb31, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.08
@@ -1343,6 +1355,14 @@ PrefabInstance:
     - target: {fileID: 4505773907345653941, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784842609183598377, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -803
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784842609183598377, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 516
       objectReference: {fileID: 0}
     - target: {fileID: 5815982477329911406, guid: 442ba5a643c12fe4fb525611fb56315b, type: 3}
       propertyPath: m_AnchorMax.y

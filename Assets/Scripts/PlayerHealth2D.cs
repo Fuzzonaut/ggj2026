@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
-using TMPro; // ✅ ADDED
+using TMPro; 
+using UnityEngine.SceneManagement; // YENİ: Sahne değişimi için gerekli
+using System.Collections; // YENİ: Bekleme süresi (Coroutine) için gerekli
 
 public class PlayerHealth2D : MonoBehaviour
 {
@@ -12,20 +14,22 @@ public class PlayerHealth2D : MonoBehaviour
     [SerializeField] private float damageCooldown = 0.5f;
     private float nextDamageTime = 0f;
 
-    [Header("UI (Real Time)")]               // ✅ ADDED
-    public TMP_Text healthText;              // ✅ ADDED
+    [Header("UI (Real Time)")]               
+    public TMP_Text healthText;
+
+    // YENİ: Üst üste ölmemesi için kontrol değişkeni
+    private bool isDead = false;
 
     void Awake()
     {
         currentHealth = maxHealth;
     }
 
-    void Update()                            // ✅ ADDED
+    void Update()                           
     {
-        UpdateHealthUI();                    // ✅ ADDED
+        UpdateHealthUI();                  
     }
 
-    // ✅ ADDED
     private void UpdateHealthUI()
     {
         if (healthText == null) return;
@@ -36,16 +40,17 @@ public class PlayerHealth2D : MonoBehaviour
             healthText.text = "HP: " + currentHealth + " / " + maxHealth;
     }
 
-    // This is called by Exploding Enemies AND standard collision
+    // Hem Patlayan Düşmanlar hem de normal çarpışma burayı kullanır
     public void TakeDamage(int amount)
     {
+        if (isDead) return; // YENİ: Ölüye hasar verilemez
+
         currentHealth -= amount;
 
-        // Prevent health from going below 0
         if (currentHealth < 0) currentHealth = 0;
 
-        // Since we have no UI, we log to console
-        Debug.Log("Ouch! Player HP: " + currentHealth);
+        // Konsola yazmaya devam etsin
+        // Debug.Log("Ouch! Player HP: " + currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -53,9 +58,11 @@ public class PlayerHealth2D : MonoBehaviour
         }
     }
 
-    // Handles damage when touching a normal enemy continuously
+    // Düşmana dokunmaya devam edince hasar yeme
     void OnCollisionStay2D(Collision2D collision)
     {
+        if (isDead) return; // YENİ: Ölüyken hasar alma
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             if (Time.time >= nextDamageTime)
@@ -68,12 +75,40 @@ public class PlayerHealth2D : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("PLAYER DIED!");
-        // Add logic here later (Restart Level / Show Game Over Screen)
+        if (isDead) return;
+        isDead = true;
 
-        // Optional: Disable player movement so they can't walk while dead
-        GetComponent<Controller>().enabled = false;
+        Debug.Log("PLAYER DIED! Starting Game Over sequence...");
 
-        // Optional: Change sprite to dead version or play animation
+        // --- YOK OLMA EFEKTİ (VANISH) ---
+        
+        // 1. Görüntüyü kapat
+        GetComponent<SpriteRenderer>().enabled = false;
+        
+        // 2. Fiziği kapat (Düşmanlar içinden geçsin)
+        GetComponent<Collider2D>().enabled = false;
+        
+        // 3. Hareketi kapat
+        Controller ctrl = GetComponent<Controller>();
+        if (ctrl != null) ctrl.enabled = false;
+
+        // 4. Silahları ve efektleri kapat (Player'ın altındaki her şeyi gizle)
+        foreach(Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+
+        // --- SAHNE DEĞİŞİMİ ---
+        StartCoroutine(LoadGameOverScene());
+    }
+
+    // YENİ: Beklemeli sahne değişimi
+    IEnumerator LoadGameOverScene()
+    {
+        // 1.5 saniye boş ekrana (veya ölüm efektine) bakmamızı sağla
+        yield return new WaitForSeconds(1.5f); 
+
+        // Sahneyi yükle
+        SceneManager.LoadScene("GameOver");
     }
 }

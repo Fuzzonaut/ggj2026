@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7670282594778401504}
   - component: {fileID: 5648460499788421014}
   - component: {fileID: 3005991778643498372}
+  - component: {fileID: -7245637992322527836}
   m_Layer: 3
   m_Name: ExploderEnemy
   m_TagString: Enemy
@@ -85,8 +86,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9811321, g: 0.56645584, b: 0, a: 1}
+  m_Sprite: {fileID: 8083041971756491791, guid: 097ce82447d0e4fa1842e029add51ea1, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -132,8 +133,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.4642857, y: -0.4814815}
+    oldSize: {x: 0.28, y: 0.27}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -154,6 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   maxHealth: 100
+  scoreValue: 10
 --- !u!50 &5648460499788421014
 Rigidbody2D:
   serializedVersion: 5
@@ -194,6 +196,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExploderEnemy
   speed: 4
-  stopDistance: 1
+  detectionRange: 1.5
+  explosionDelay: 0.5
   damage: 20
-  explosionEffect: {fileID: 440351501480242325, guid: b4cf57ffbe18649a48fec802db89adbb, type: 3}
+  explosionRadius: 2.5
+  player: {fileID: 0}
+--- !u!95 &-7245637992322527836
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2976907400223634172}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8868cde9e8a4a47a68751fc84fc387e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
