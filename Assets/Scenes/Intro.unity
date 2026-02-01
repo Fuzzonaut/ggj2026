@@ -151,8 +151,8 @@ MonoBehaviour:
   introText: {fileID: 1824244077}
   blackPanel: {fileID: 1675882217}
   paragraph: 'It is always a gruesome and distraught realization, understanding the
-    reality around you is nothing but a mask, an illusion. Take of your mask, your
-    very own skin until you''re just bones to see reality as it is. '
+    reality around you is nothing but a mask, an illusion. Take of your <color=#ff0000>mask</color>,
+    your very own skin until you''re just bones to see reality as it is. '
   fadeInTime: 1.2
   holdTime: 5.5
   fadeOutTime: 1.2
