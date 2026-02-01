@@ -513,8 +513,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PLAY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 897d605f5807f6a49a911d95c7802c3d, type: 2}
+  m_sharedMaterial: {fileID: -3645795654109146139, guid: 897d605f5807f6a49a911d95c7802c3d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 738486808}
   - component: {fileID: 738486807}
   m_Layer: 0
-  m_Name: ChatGPT Image Feb 1, 2026, 02_10_51 PM_0
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
