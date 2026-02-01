@@ -192,16 +192,36 @@ public class Controller : MonoBehaviour
 
     void PerformAreaAttack()
     {
-        if (areaEffectPrefab != null) Instantiate(areaEffectPrefab, transform.position, Quaternion.identity);
-        if (explosionSFX != null) explosionSFX.PlayExplosion();
+        // --- YENİ: Animasyonu Tetikle ---
+        if (anim != null)
+        {
+            anim.SetTrigger("AreaAttack");
+        }
+        // -------------------------------
+
+        if (areaEffectPrefab != null)
+        {
+            Instantiate(areaEffectPrefab, transform.position, Quaternion.identity);
+        }
+
+        if (explosionSFX != null)
+        {
+            explosionSFX.PlayExplosion();
+        }
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, areaRadius);
+
         foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy.CompareTag("Enemy"))
             {
                 EnemyHealth healthScript = enemy.GetComponent<EnemyHealth>();
-                if (healthScript != null) healthScript.TakeDamage(areaDamage);
+                // Eski EnemyHealth veya yeni PlayerHealth2D mantığına göre burası değişebilir
+                // Ama senin düşman scriptin neyse o kalmalı.
+                if (healthScript != null)
+                {
+                    healthScript.TakeDamage(areaDamage);
+                }
             }
         }
     }

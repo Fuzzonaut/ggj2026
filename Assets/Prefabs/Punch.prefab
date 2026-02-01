@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1022322124940219794}
   - component: {fileID: 9218939534060858123}
   - component: {fileID: 3388852777082206030}
+  - component: {fileID: -8275523899040434763}
   m_Layer: 0
   m_Name: Punch
   m_TagString: Untagged
@@ -106,9 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5908a6641e11944bc79c1f3d080d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Punch
-  audioSource: {fileID: 4120240377371484393, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
-  punchSound: {fileID: 8300000, guid: e5ecc98ff40556543b77c8c2aa090822, type: 3}
   punchDamage: 25
+  punchSound: {fileID: 8300000, guid: e5ecc98ff40556543b77c8c2aa090822, type: 3}
 --- !u!70 &9218939534060858123
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -144,7 +144,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.7, y: 1.73}
   m_Direction: 0
 --- !u!50 &3388852777082206030
 Rigidbody2D:
@@ -173,3 +173,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &-8275523899040434763
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4442805396724419325}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eed108ab6c9ff65418aa362c54814713, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

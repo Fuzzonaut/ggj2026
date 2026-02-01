@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0073750857370148959ad9da1d5707d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InsanityManager
-  insanity: 100
+  insanity: 33
   maxInsanity: 100
   increaseRate: 0.7
   insanitySlider: {fileID: 999794796}
@@ -1098,7 +1098,7 @@ PrefabInstance:
     - target: {fileID: 5919895462683201650, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
       propertyPath: explosionSFX
       value: 
-      objectReference: {fileID: 1036849056}
+      objectReference: {fileID: 0}
     - target: {fileID: 5919895462683201650, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
       propertyPath: insanityManager
       value: 
@@ -1582,3 +1582,4 @@ SceneRoots:
   - {fileID: 959188708}
   - {fileID: 837693356}
   - {fileID: 1437740709}
+  - {fileID: 292598455}
