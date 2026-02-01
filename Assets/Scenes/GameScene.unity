@@ -836,6 +836,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4769220704975576601, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769220704975576601, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
       propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
@@ -908,6 +912,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3325351127388302440, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 2115564690}
+    - targetCorrespondingSourceObject: {fileID: 3325351127388302440, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 2115564682}
   m_SourcePrefab: {fileID: 100100000, guid: 65d071726d2c1a24da7b615f98e17550, type: 3}
 --- !u!1 &2037997452 stripped
@@ -942,6 +949,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2115564690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037997452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9cb3d35f56284b1ba3608e71e1312d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMorph
+  insanityManager: {fileID: 195960405}
+  anim: {fileID: 2115564682}
+  phase1Controller: {fileID: 22100000, guid: 6df5769f2000f489887e681108f12ce8, type: 2}
+  phase2Controller: {fileID: 9100000, guid: b4eaabd487ed2244193a4ebd7ae1ab46, type: 2}
+  phase3Controller: {fileID: 22100000, guid: dee60f4e3c4c444d9b5068e483560d97, type: 2}
 --- !u!1001 &5412703267083230681
 PrefabInstance:
   m_ObjectHideFlags: 0
