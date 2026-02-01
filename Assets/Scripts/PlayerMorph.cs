@@ -18,6 +18,8 @@ public class PlayerMorph : MonoBehaviour
         // Ensure we start with Phase 1
         if (anim == null) anim = GetComponent<Animator>();
         anim.runtimeAnimatorController = phase1Controller;
+
+
     }
 
     void Update()
@@ -50,6 +52,11 @@ public class PlayerMorph : MonoBehaviour
         // Swap the brain of the animator
         // Note: This might reset the animation to the start frame briefly
         anim.runtimeAnimatorController = newController;
+
+        foreach (AnimationClip item in anim.runtimeAnimatorController.animationClips)
+        {
+            item.events = new AnimationEvent[0];
+        }
         
         Debug.Log("Morphed to Phase " + phaseNum);
     }
