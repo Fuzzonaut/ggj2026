@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InsanityManager
   insanity: 100
+  insanity: 33
   maxInsanity: 100
   increaseRate: 0.7
   insanitySlider: {fileID: 999794796}
@@ -1582,3 +1583,4 @@ SceneRoots:
   - {fileID: 959188708}
   - {fileID: 837693356}
   - {fileID: 1437740709}
+  - {fileID: 292598455}
