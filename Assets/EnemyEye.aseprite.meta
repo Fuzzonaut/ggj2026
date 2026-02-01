@@ -7,17 +7,17 @@ ScriptedImporter:
       type: UnityEngine:AnimationClip
       assembly: UnityEngine.AnimationModule
       name: chase
-    second: {fileID: 7400000, guid: e2487cc43355d484fb460797e52e3d1f, type: 2}
+    second: {fileID: 7400000, guid: fa72302d705eb634a9a064cbe0f315fe, type: 2}
   - first:
       type: UnityEngine:AnimationClip
       assembly: UnityEngine.AnimationModule
       name: death
-    second: {fileID: 7400000, guid: 387159c0da7cb434d9e3336358f34494, type: 2}
+    second: {fileID: 7400000, guid: f152106e305ffbd4ea2df4d51c7f9ce9, type: 2}
   - first:
       type: UnityEngine:AnimationClip
       assembly: UnityEngine.AnimationModule
       name: explode
-    second: {fileID: 7400000, guid: 3a635141bcfe44c8daedd18266520539, type: 2}
+    second: {fileID: 7400000, guid: d4be7701d4dfb2d40893d3c970e5ecd9, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -117,7 +117,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639055256159438450
+  platformSettingsDirtyTick: 639055381644367965
   textureAssetName: 
   singleSpriteImportData:
   - name: 
