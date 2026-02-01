@@ -6,7 +6,7 @@ public class Controller : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D col;
     private Vector2 mousePos;
-
+    private Animator anim;
     [SerializeField] private float speed = 5.0f;
 
     [Header("Referance")]
@@ -49,6 +49,8 @@ public class Controller : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -103,19 +105,29 @@ public class Controller : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        rb.linearVelocity = new Vector2(horizontalInput * speed, verticalInput * speed);
+        Vector2 movement = new Vector2(horizontalInput, verticalInput).normalized;
+        rb.linearVelocity = movement * speed;
 
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        float angle = Mathf.Atan2(
-            mousePos.y - transform.position.y,
-            mousePos.x - transform.position.x
-        ) * Mathf.Rad2Deg - 90f;
-
-        float a = Mathf.DeltaAngle(0f, angle);
-        float snapped = Mathf.Round(a / 45f) * 45f;
-        if (snapped == 180f) snapped = -180f;
-
-        transform.localRotation = Quaternion.Euler(0f, 0f, snapped);
+    if (anim != null)
+    {
+        // 1. Is the player pressing keys?
+        if (movement.magnitude > 0.01f)
+        {
+            // Update the animation to face the correct direction
+            anim.SetFloat("InputX", movement.x);
+            anim.SetFloat("InputY", movement.y);
+            
+            // Unpause the animation so the legs move
+            anim.speed = 1; 
+        }
+        else
+        {
+            // 2. Player stopped pressing keys
+            // Pause the animation so the character "freezes" in the last known frame
+            // This acts as your "Idle" without needing a separate animation
+            anim.speed = 0; 
+        }
+    }
     }
 
     void TryShootProjectile()
