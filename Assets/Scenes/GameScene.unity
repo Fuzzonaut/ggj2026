@@ -150,7 +150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InsanityManager
   insanity: 100
-  insanity: 33
   maxInsanity: 100
   increaseRate: 0.7
   insanitySlider: {fileID: 999794796}
